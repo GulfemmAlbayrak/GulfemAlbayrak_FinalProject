@@ -65,8 +65,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MusicResultCell", for: indexPath) as! MusicResultCell
         let musicResult = searchResults[indexPath.row]
+        cell.musicResult = musicResult
         cell.configure(with: musicResult)
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
     }
 }
 

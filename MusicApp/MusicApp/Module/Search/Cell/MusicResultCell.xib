@@ -28,37 +28,51 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YgY-uF-6TE">
-                                <rect key="frame" x="124" y="16" width="262" height="21"/>
+                                <rect key="frame" x="124" y="16" width="198" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGl-0l-MhM">
-                                <rect key="frame" x="124" y="53" width="262" height="17"/>
+                                <rect key="frame" x="124" y="53" width="128" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjZ-v8-v4g">
-                                <rect key="frame" x="124" y="84" width="262" height="17"/>
+                                <rect key="frame" x="124" y="84" width="198" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r89-QA-WM7">
+                                <rect key="frame" x="332" y="40.666666666666664" width="50" height="34.999999999999993"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="HPL-vZ-d9v"/>
+                                    <constraint firstAttribute="height" constant="35" id="tqO-hj-xUp"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="play.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="playButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sGY-1q-Q4L"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="YgY-uF-6TE" secondAttribute="trailing" constant="16" id="EtM-sr-1K5"/>
                             <constraint firstItem="YgY-uF-6TE" firstAttribute="leading" secondItem="aZj-b8-bCD" secondAttribute="trailing" constant="16" id="FRZ-y8-yUY"/>
+                            <constraint firstItem="r89-QA-WM7" firstAttribute="centerY" secondItem="yda-kn-wh9" secondAttribute="centerY" id="J61-2Z-c5x"/>
                             <constraint firstItem="aZj-b8-bCD" firstAttribute="leading" secondItem="yda-kn-wh9" secondAttribute="leading" constant="8" id="JI0-GH-uEh"/>
+                            <constraint firstAttribute="trailing" secondItem="cjZ-v8-v4g" secondAttribute="trailing" constant="80" id="PAh-hQ-5hv"/>
+                            <constraint firstAttribute="trailing" secondItem="YgY-uF-6TE" secondAttribute="trailing" constant="80" id="coA-Vd-61y"/>
                             <constraint firstItem="YgY-uF-6TE" firstAttribute="top" secondItem="yda-kn-wh9" secondAttribute="top" constant="16" id="fl9-fC-FN1"/>
                             <constraint firstItem="aZj-b8-bCD" firstAttribute="top" secondItem="yda-kn-wh9" secondAttribute="top" constant="8" id="fwP-14-6cF"/>
                             <constraint firstItem="cjZ-v8-v4g" firstAttribute="leading" secondItem="aZj-b8-bCD" secondAttribute="trailing" constant="16" id="gLt-IU-BpB"/>
+                            <constraint firstAttribute="trailing" secondItem="r89-QA-WM7" secondAttribute="trailing" constant="20" id="jSS-yk-F5h"/>
                             <constraint firstItem="OGl-0l-MhM" firstAttribute="top" secondItem="YgY-uF-6TE" secondAttribute="bottom" constant="16" id="k25-hp-h3i"/>
-                            <constraint firstAttribute="trailing" secondItem="cjZ-v8-v4g" secondAttribute="trailing" constant="16" id="ogi-2T-MaW"/>
                             <constraint firstAttribute="bottom" secondItem="aZj-b8-bCD" secondAttribute="bottom" constant="8" id="owt-kZ-dXh"/>
-                            <constraint firstAttribute="trailing" secondItem="OGl-0l-MhM" secondAttribute="trailing" constant="16" id="s7c-Op-Ada"/>
                             <constraint firstItem="OGl-0l-MhM" firstAttribute="leading" secondItem="aZj-b8-bCD" secondAttribute="trailing" constant="16" id="xBv-xZ-2kA"/>
+                            <constraint firstItem="r89-QA-WM7" firstAttribute="leading" secondItem="OGl-0l-MhM" secondAttribute="trailing" constant="80" id="zKb-1Z-eeg"/>
                             <constraint firstItem="cjZ-v8-v4g" firstAttribute="top" secondItem="OGl-0l-MhM" secondAttribute="bottom" constant="14" id="zxI-Rp-WZW"/>
                         </constraints>
                     </view>
@@ -74,6 +88,7 @@
             <connections>
                 <outlet property="artistName" destination="YgY-uF-6TE" id="a3M-EZ-PIg"/>
                 <outlet property="musicImage" destination="aZj-b8-bCD" id="dF9-cL-Reg"/>
+                <outlet property="playButton" destination="r89-QA-WM7" id="hsA-7z-X8m"/>
                 <outlet property="trackCountLabel" destination="cjZ-v8-v4g" id="SUs-ve-xMC"/>
                 <outlet property="trackName" destination="OGl-0l-MhM" id="Dcd-EI-7ZK"/>
             </connections>
@@ -81,6 +96,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="play.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

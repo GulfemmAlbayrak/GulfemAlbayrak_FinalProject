@@ -1,11 +1,12 @@
-//
+
 //  SplashInteractor.swift
 //  MusicApp
 //
 //  Created by Gülfem Albayrak on 8.06.2023.
-//
+
 
 import Foundation
+import MusicAPI
 
 protocol SplashInteractorProtocol {
     func checkInternetConnection()
@@ -22,8 +23,8 @@ final class SplashInteractor {
 extension SplashInteractor: SplashInteractorProtocol {
     
     func checkInternetConnection() {
-        //let internetStatus = API.shared.isConnectedToInternet()
-        //self.output?.internetConnection(status: internetStatus)
+//        let internetStatus = API.shared.isConnectedToInternet()
+//        self.output?.internetConnection(status: internetStatus)
     }
    
 }

@@ -31,6 +31,10 @@
 		D76C8C412A31314A009FF54A /* SplashInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C8C402A31314A009FF54A /* SplashInteractor.swift */; };
 		D76C8C432A313156009FF54A /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C8C422A313156009FF54A /* SplashRouter.swift */; };
 		D76C8C462A3132BB009FF54A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C8C452A3132BB009FF54A /* BaseViewController.swift */; };
+		D76C8C4A2A31E90B009FF54A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C8C492A31E90B009FF54A /* LoadingView.swift */; };
+		D76C8C4E2A31E994009FF54A /* LoadingShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C8C4D2A31E994009FF54A /* LoadingShowable.swift */; };
+		D76C8C522A31FDBC009FF54A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C8C502A31FDBC009FF54A /* DetailViewController.swift */; };
+		D76C8C532A31FDBC009FF54A /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D76C8C512A31FDBC009FF54A /* DetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +83,10 @@
 		D76C8C402A31314A009FF54A /* SplashInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashInteractor.swift; sourceTree = "<group>"; };
 		D76C8C422A313156009FF54A /* SplashRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouter.swift; sourceTree = "<group>"; };
 		D76C8C452A3132BB009FF54A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		D76C8C492A31E90B009FF54A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		D76C8C4D2A31E994009FF54A /* LoadingShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingShowable.swift; sourceTree = "<group>"; };
+		D76C8C502A31FDBC009FF54A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D76C8C512A31FDBC009FF54A /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,18 +140,14 @@
 		D76C8B992A2FD80D009FF54A /* MusicApp */ = {
 			isa = PBXGroup;
 			children = (
-				D76C8C442A3132A8009FF54A /* Base */,
-				D76C8C382A30F450009FF54A /* Splash */,
-				D76C8BE02A2FE168009FF54A /* Cell */,
-				D76C8BD12A2FDE4F009FF54A /* Search */,
-				D76C8B9A2A2FD80D009FF54A /* AppDelegate.swift */,
-				D76C8B9C2A2FD80D009FF54A /* SceneDelegate.swift */,
+				D76C8C472A31E8CF009FF54A /* App */,
+				D76C8C482A31E8EF009FF54A /* CustomView */,
+				D76C8C4B2A31E92C009FF54A /* Module */,
+				D76C8C4C2A31E97B009FF54A /* Utils */,
 				D76C8B9E2A2FD80D009FF54A /* ViewController.swift */,
 				D76C8BA02A2FD80D009FF54A /* Main.storyboard */,
-				D76C8BA62A2FD80E009FF54A /* Assets.xcassets */,
 				D76C8BA82A2FD80E009FF54A /* LaunchScreen.storyboard */,
 				D76C8BAB2A2FD80E009FF54A /* Info.plist */,
-				D76C8BA32A2FD80D009FF54A /* MusicApp.xcdatamodeld */,
 			);
 			path = MusicApp;
 			sourceTree = "<group>";
@@ -175,6 +179,7 @@
 		D76C8BD12A2FDE4F009FF54A /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				D76C8BE02A2FE168009FF54A /* Cell */,
 				D76C8BD22A2FDE7F009FF54A /* SearchViewController.swift */,
 				D76C8BD32A2FDE7F009FF54A /* SearchViewController.xib */,
 				D76C8BD82A2FDEA8009FF54A /* SearchInteractor.swift */,
@@ -211,6 +216,53 @@
 				D76C8C452A3132BB009FF54A /* BaseViewController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		D76C8C472A31E8CF009FF54A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D76C8B9A2A2FD80D009FF54A /* AppDelegate.swift */,
+				D76C8B9C2A2FD80D009FF54A /* SceneDelegate.swift */,
+				D76C8BA62A2FD80E009FF54A /* Assets.xcassets */,
+				D76C8BA32A2FD80D009FF54A /* MusicApp.xcdatamodeld */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D76C8C482A31E8EF009FF54A /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				D76C8C492A31E90B009FF54A /* LoadingView.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		D76C8C4B2A31E92C009FF54A /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				D76C8C4F2A31FDA5009FF54A /* Detail */,
+				D76C8C382A30F450009FF54A /* Splash */,
+				D76C8C442A3132A8009FF54A /* Base */,
+				D76C8BD12A2FDE4F009FF54A /* Search */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		D76C8C4C2A31E97B009FF54A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D76C8C4D2A31E994009FF54A /* LoadingShowable.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D76C8C4F2A31FDA5009FF54A /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D76C8C502A31FDBC009FF54A /* DetailViewController.swift */,
+				D76C8C512A31FDBC009FF54A /* DetailViewController.xib */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,6 +374,7 @@
 			files = (
 				D76C8BAA2A2FD80E009FF54A /* LaunchScreen.storyboard in Resources */,
 				D76C8C3D2A313126009FF54A /* SplashViewController.xib in Resources */,
+				D76C8C532A31FDBC009FF54A /* DetailViewController.xib in Resources */,
 				D76C8BE42A2FE1B3009FF54A /* MusicResultCell.xib in Resources */,
 				D76C8BA72A2FD80E009FF54A /* Assets.xcassets in Resources */,
 				D76C8BD52A2FDE7F009FF54A /* SearchViewController.xib in Resources */,
@@ -351,13 +404,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D76C8BD42A2FDE7F009FF54A /* SearchViewController.swift in Sources */,
+				D76C8C522A31FDBC009FF54A /* DetailViewController.swift in Sources */,
 				D76C8B9F2A2FD80D009FF54A /* ViewController.swift in Sources */,
 				D76C8C432A313156009FF54A /* SplashRouter.swift in Sources */,
+				D76C8C4E2A31E994009FF54A /* LoadingShowable.swift in Sources */,
 				D76C8BDD2A2FDEDA009FF54A /* SearchPresenter.swift in Sources */,
 				D76C8BDF2A2FE0BF009FF54A /* SearchRouter.swift in Sources */,
 				D76C8C462A3132BB009FF54A /* BaseViewController.swift in Sources */,
 				D76C8C3F2A31313C009FF54A /* SplashPresenter.swift in Sources */,
 				D76C8B9B2A2FD80D009FF54A /* AppDelegate.swift in Sources */,
+				D76C8C4A2A31E90B009FF54A /* LoadingView.swift in Sources */,
 				D76C8B9D2A2FD80D009FF54A /* SceneDelegate.swift in Sources */,
 				D76C8C412A31314A009FF54A /* SplashInteractor.swift in Sources */,
 				D76C8BE32A2FE1B3009FF54A /* MusicResultCell.swift in Sources */,
