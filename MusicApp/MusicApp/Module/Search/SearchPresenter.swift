@@ -1,52 +1,86 @@
-//
-//  presenter.swift
-//  VIPER
-//
-//  Created by Gülfem Albayrak on 7.06.2023.
-//
-
+ 
 import Foundation
 import MusicAPI
 
-//object
-//protocol
-//ref to interactorr, routuer, view
-enum FetchError: Error {
-    case failed
-}
+ enum FetchError: Error {
+     case failed
+ }
+ 
+ protocol SearchPresenterProtocol: AnyObject {
+ func music(_ index: Int) -> MusicResult?
+ func numberOfItems() -> Int
+ func didSelectRowAt(index: Int)
+ func viewDidLoad()
+ func getMusic(with searchText: String)
 
+ }
 
-protocol SearchPresenterProtocol {
-    var router: AnyRouter? { get set }
-    var interactor: AnyInteractor? { get set }
-    var view: AnyView? { get set }
+ final class SearchPresenter {
     
-    func searchMusic(with searchText: String)
-    func interactorDidFetchMusic(with result: Result<[MusicResult], Error>)
-}
+     unowned var view: SearchViewProtocol
+     let router: SearchRouterProtocol!
+     let interactor: SearchInteractorProtocol!
+     
+     private var music: [MusicResult] = []
+     
+ init(
+     view: SearchViewProtocol,
+     router: SearchRouterProtocol,
+     interactor: SearchInteractorProtocol)
+ {
+     self.view = view
+     self.router = router
+     self.interactor = interactor
+ }
+     
+ }
 
-final class SearchPresenter: SearchPresenterProtocol {
-    var router: AnyRouter?
-    
-    var interactor: AnyInteractor? {
-        didSet {
-            interactor?.presenter = self // Interactor'a presenter'ı set et
-        }
+extension SearchPresenter: SearchPresenterProtocol {
+    func viewDidLoad() {
+        view.setTitle("iTunes")
+        view.configureSearchBar()
+        view.configureTableView()
+        let searchText = view.getSearchText()
+        getMusic(with: searchText)
     }
     
-    var view: AnyView?
-    
-    func searchMusic(with searchText: String) {
-        interactor?.getMusics(with: searchText)
+    func getMusic(with searchText: String) {
+        view.showLoadingView()
+        interactor.getMusics(with: searchText)
     }
+     
+     func music(_ index: Int) -> MusicResult? {
+         return music[safe: index]
+     }
+    func numberOfItems() -> Int {
+        music.count
+    }
+     
+     func didSelectRowAt(index: Int) {
+         guard let source = music(index) else { return }
+         router.navigate(.detail(source: source))
+     }
+
+ }
+
+extension SearchPresenter: SearchInteractorOutputProtocol {
     
-    func interactorDidFetchMusic(with result: Result<[MusicResult], Error>) {
+    func fetchMusicsOutput(_ result: MusicsSourcesResult) {
+         
+        view.hideLoadingView()
+         
         switch result {
         case .success(let musicResult):
-            view?.update(with: musicResult)
+            self.music = musicResult
+            view.update(with: musicResult)
         case .failure:
-            view?.update(with: "Something went wrong")
+            view.update(with: "Something went wrong")
         }
-    }
-}
+         
+     }
+     
+ }
+
+ 
+ 
 

@@ -7,36 +7,48 @@
 
 import Foundation
 import UIKit
-
+import MusicAPI
 //object
 //Entry point
 
-typealias EntryPoint = AnyView & UIViewController
 
-protocol AnyRouter {
-    var entry: EntryPoint? { get }
-    static func start() -> AnyRouter
+protocol SearchRouterProtocol {
+    func navigate(_ route: SearchRoutes)
 }
 
-class SearchRouter: AnyRouter {
-    var entry: EntryPoint?
+enum SearchRoutes {
+    case detail(source: MusicResult?)
+}
+
+class SearchRouter {
     
-    static func start() -> AnyRouter {
+    weak var viewController: SearchViewController?
+    
+    static func start() -> SearchViewController {
+        let view = SearchViewController()
+        let interactor = SearchInteractor()
         let router = SearchRouter()
         
-        // Assign VIP
-        var view: AnyView & UIViewController = SearchViewController() // ViewController tipini değiştir
-        var presenter: SearchPresenterProtocol = SearchPresenter()
-        var interactor: AnyInteractor = SearchInteractor()
-        
+        let presenter = SearchPresenter(view: view, router: router, interactor: interactor)
+    
         view.presenter = presenter
+        interactor.output = presenter
+        router.viewController = view
+        return view
         
-        interactor.presenter = presenter
-        presenter.view = view
-        presenter.interactor = interactor
-        
-        router.entry = view
-        
-        return router
     }
+}
+
+extension SearchRouter: SearchRouterProtocol {
+    
+   func navigate(_ route: SearchRoutes) {
+        switch route {
+        case .detail(let source):
+            
+            let detailVC = DetailRouter.createModule()
+            detailVC.musicResult = source
+            viewController?.navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
+    
 }

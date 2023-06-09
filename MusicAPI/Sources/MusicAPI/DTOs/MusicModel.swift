@@ -13,7 +13,7 @@ public struct MusicModel: Decodable {
 
 public struct MusicResult: Decodable {
     public let artistName:String?
-    //public let collectionName: String?
+    public let primaryGenreName: String?
     public let trackName: String?
     public let previewUrl: String?
     public let artworkUrl100: String?

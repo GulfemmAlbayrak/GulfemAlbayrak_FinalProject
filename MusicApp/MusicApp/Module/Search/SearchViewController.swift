@@ -8,43 +8,72 @@
 import UIKit
 import MusicAPI
 
-protocol AnyView {
-    var presenter: SearchPresenterProtocol? { get set }
+protocol SearchViewProtocol: AnyObject {
     
-    func update(with artist: [MusicResult])
+    func showLoadingView()
+    func hideLoadingView()
+    func getSearchText() -> String
+    func configureSearchBar()
+    func configureTableView()
+    func update(with musicResult: [MusicResult])
     func update(with error: String)
-    
+    func setTitle(_ title: String)
 }
 
-class SearchViewController: UIViewController, AnyView {
-
+final class SearchViewController: BaseViewController {
+    
+    
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
-    var presenter: SearchPresenterProtocol?
+    var presenter: SearchPresenterProtocol!
     var searchResults: [MusicResult] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureSearchBar()
-        configureTableView()
+        
+        presenter.viewDidLoad()
     }
     
-    private func configureTableView() {
+
+}
+extension SearchViewController: SearchViewProtocol {
+    
+    
+    func getSearchText() -> String {
+        return searchBar.text ?? ""
+    }
+    
+     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "MusicResultCell", bundle: nil), forCellReuseIdentifier: "MusicResultCell")
     }
     
-    private func configureSearchBar() {
+     func configureSearchBar() {
         searchBar.delegate = self
     }
     
     func update(with musicResult: [MusicResult]) {
         print("got musics")
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             self.searchResults = musicResult
             self.tableView.reloadData()
+            
+            if self.getSearchText().isEmpty {
+                self.tableView.isHidden = true
+                self.titleLabel.text = "iTunes'a hoş Geldiniz!"
+                self.titleLabel.isHidden = false
+            } else if musicResult.isEmpty {
+                self.tableView.isHidden = true
+                self.titleLabel.text = "Sonuç bulunamadı"
+                self.titleLabel.isHidden = false
+            } else {
+                self.tableView.isHidden = false
+                self.titleLabel.isHidden = true
+            }
         }
     }
     
@@ -54,12 +83,23 @@ class SearchViewController: UIViewController, AnyView {
             self.searchResults = []
         }
     }
-
+    
+    func showLoadingView(){
+        showLoading()
+    }
+    
+    func hideLoadingView(){
+        hideLoading()
+    }
+    
+    func setTitle(_ title: String) {
+        self.title = title
+    }
 }
 
-extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.count
+        presenter.numberOfItems()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,13 +109,25 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configure(with: musicResult)
         return cell
     }
+
+
+} 
+
+extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        presenter.didSelectRowAt(index: indexPath.row)
     }
 }
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        presenter?.searchMusic(with: searchText)
+        presenter?.getMusic(with: getSearchText())
     }
+    
+//    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+//        tableView.isHidden = true
+//        titleLabel.isHidden = false
+//        return true
+//    }
+    
 }

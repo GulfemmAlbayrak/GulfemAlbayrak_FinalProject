@@ -27,10 +27,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let searchRouter = SearchRouter.start()
-        let initialVC = searchRouter.entry
+        //let initialVC = searchRouter.viewController
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = initialVC
+        window.rootViewController = searchRouter
         self.window = window
         window.makeKeyAndVisible()
     }
