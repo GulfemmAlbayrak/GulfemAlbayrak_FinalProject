@@ -41,7 +41,8 @@ extension SplashRouter: SplashRouterProtocol {
         case .homeScreen:
             guard let window = viewController?.view.window else { return }
             let searchVC = SearchRouter.start()
-            let navigationController = UINavigationController(rootViewController: searchVC as! UIViewController)
+            let navigationController = UINavigationController(rootViewController: searchVC )
+            window.makeKeyAndVisible()
             window.rootViewController = navigationController
         }
     }

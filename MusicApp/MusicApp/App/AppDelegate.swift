@@ -17,15 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        // Create the window and set the root view controller
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        
-//        let router = SearchRouter.start()
-//        let entryViewController = router.view
-//        window?.rootViewController = UINavigationController(rootViewController: entryViewController!)
-//        window?.makeKeyAndVisible()
-        
-        return true
+//        // Window oluşturma
+//            window = UIWindow(frame: UIScreen.main.bounds)
+//            
+//            // SearchViewController oluşturma
+//            let searchViewController = SearchViewController()
+//            
+//            // UINavigationController oluşturma ve SearchViewController'ı içine ekleyerek rootViewController olarak atama
+//            let navigationController = UINavigationController(rootViewController: searchViewController)
+//            window?.rootViewController = navigationController
+//            
+//            // Window'u görünür hale getirme
+//            window?.makeKeyAndVisible()
+            
+            return true
     }
 
     // MARK: UISceneSession Lifecycle

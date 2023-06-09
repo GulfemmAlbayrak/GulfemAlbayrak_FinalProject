@@ -35,4 +35,10 @@ public class MusicService: MusicServiceProtocol {
         }
     }
     
+    public func isConnectedToInternet() -> Bool {
+        return Reachability.isConnectedToNetwork()
+    }
+    
+    
 }
+

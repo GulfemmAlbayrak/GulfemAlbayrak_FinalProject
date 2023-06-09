@@ -12,10 +12,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
 
-//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-//        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-//        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-//        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
+        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
+        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 //        guard let scene = (scene as? UIWindowScene) else { return }
 //        let window = UIWindow(windowScene: scene)
 //        let splash = SplashRouter.createModule()
@@ -23,16 +23,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        window.rootViewController = splash
 //        self.window = window
     
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        let searchRouter = SearchRouter.start()
+//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//
+        guard let scene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: scene)
+        let search = SearchRouter.start()
         //let initialVC = searchRouter.viewController
-        
-        let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = searchRouter
-        self.window = window
+
         window.makeKeyAndVisible()
+        window.rootViewController = search
+        self.window = window
+//
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

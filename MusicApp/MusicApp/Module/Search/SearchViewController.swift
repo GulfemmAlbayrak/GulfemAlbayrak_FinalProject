@@ -15,8 +15,9 @@ protocol SearchViewProtocol: AnyObject {
     func getSearchText() -> String
     func configureSearchBar()
     func configureTableView()
+    func reloadData()
     func update(with musicResult: [MusicResult])
-    func update(with error: String)
+    func showError(_ message:String)
     func setTitle(_ title: String)
 }
 
@@ -32,7 +33,15 @@ final class SearchViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // SearchViewController'ı bir UINavigationController içine yerleştirme
+        let navigationController = UINavigationController(rootViewController: self)
+        navigationController.navigationBar.prefersLargeTitles = true
         
+        // Oluşturulan UINavigationController'ı kullanarak mevcut görünümü değiştirme
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.window?.rootViewController = navigationController
+        }
+        print("Is embedded in UINavigationController: \(navigationController != nil)")
         presenter.viewDidLoad()
     }
     
@@ -40,7 +49,13 @@ final class SearchViewController: BaseViewController {
 }
 extension SearchViewController: SearchViewProtocol {
     
-    
+    func reloadData() {
+        DispatchQueue.main.async { [ weak self ] in
+            guard let self else { return }
+            self.tableView.reloadData()
+        }
+    }
+
     func getSearchText() -> String {
         return searchBar.text ?? ""
     }
@@ -77,11 +92,12 @@ extension SearchViewController: SearchViewProtocol {
         }
     }
     
-    func update(with error: String) {
-        print(error)
-        DispatchQueue.main.async {
-            self.searchResults = []
-        }
+    func showError(_ message: String) {
+//        print(error)
+//        DispatchQueue.main.async {
+//            self.searchResults = []
+//        }
+        showAlert("Error", message)
     }
     
     func showLoadingView(){
@@ -115,6 +131,7 @@ extension SearchViewController: UITableViewDataSource {
 
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Cell selected at index: \(indexPath.row)")
         presenter.didSelectRowAt(index: indexPath.row)
     }
 }
@@ -124,10 +141,6 @@ extension SearchViewController: UISearchBarDelegate {
         presenter?.getMusic(with: getSearchText())
     }
     
-//    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-//        tableView.isHidden = true
-//        titleLabel.isHidden = false
-//        return true
-//    }
-    
 }
+
+

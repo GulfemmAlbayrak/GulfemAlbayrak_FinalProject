@@ -69,6 +69,8 @@ extension DetailViewController: DetailViewControllerProtocol {
     }
     
 }
+
+
 //func configureView(with musicResult: MusicResult) {
 //   // Use the `musicResult` property to populate the UI elements
 //

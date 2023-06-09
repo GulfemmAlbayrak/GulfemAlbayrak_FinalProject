@@ -1,10 +1,6 @@
  
 import Foundation
 import MusicAPI
-
- enum FetchError: Error {
-     case failed
- }
  
  protocol SearchPresenterProtocol: AnyObject {
  func music(_ index: Int) -> MusicResult?
@@ -57,6 +53,7 @@ extension SearchPresenter: SearchPresenterProtocol {
     }
      
      func didSelectRowAt(index: Int) {
+         print("Did select row at index: \(index)")
          guard let source = music(index) else { return }
          router.navigate(.detail(source: source))
      }
@@ -74,7 +71,7 @@ extension SearchPresenter: SearchInteractorOutputProtocol {
             self.music = musicResult
             view.update(with: musicResult)
         case .failure:
-            view.update(with: "Something went wrong")
+            view.showError("Something went wrong")
         }
          
      }

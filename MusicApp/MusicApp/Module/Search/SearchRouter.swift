@@ -40,15 +40,21 @@ class SearchRouter {
 }
 
 extension SearchRouter: SearchRouterProtocol {
-    
-   func navigate(_ route: SearchRoutes) {
+    func navigate(_ route: SearchRoutes) {
+        print("Navigate to route: \(route)")
         switch route {
         case .detail(let source):
+//            let detailVC = DetailRouter.createModule()
+//            detailVC.musicResult = source
+//            viewController?.navigationController?.pushViewController(detailVC, animated: true)
             
+            
+            guard let window = viewController?.view.window else { return }
             let detailVC = DetailRouter.createModule()
             detailVC.musicResult = source
-            viewController?.navigationController?.pushViewController(detailVC, animated: true)
+            let navigationController = UINavigationController(rootViewController: detailVC )
+            window.makeKeyAndVisible()
+            window.rootViewController = navigationController
         }
     }
-    
 }

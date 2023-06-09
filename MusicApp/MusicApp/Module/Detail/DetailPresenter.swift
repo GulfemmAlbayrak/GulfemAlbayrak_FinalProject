@@ -8,32 +8,6 @@
 import UIKit
 import MusicAPI
 
-//protocol DetailPresenterProtocol {
-//    var view: DetailViewProtocol? { get set }
-//    var interactor: DetailInteractorProtocol? { get set }
-//    var router: DetailRouterProtocol? { get set }
-//    var musicResult: MusicResult? { get set }
-//
-//    func viewDidLoad()
-//    func playButtonTapped()
-//}
-//
-//class DetailPresenter: DetailPresenterProtocol {
-//    weak var view: DetailViewProtocol?
-//    var interactor: DetailInteractorProtocol?
-//    var router: DetailRouterProtocol?
-//    var musicResult: MusicResult?
-//
-//    func viewDidLoad() {
-//        guard let musicResult = musicResult else { return }
-//        view?.configureView(with: musicResult)
-//    }
-//
-//    func playButtonTapped() {
-//        // Handle play button tap event
-//    }
-//}
-
 protocol DetailPresenterProtocol {
     func viewDidLoad()
 }
@@ -85,3 +59,4 @@ extension DetailPresenter: DetailPresenterProtocol {
     
     
 }
+
