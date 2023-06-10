@@ -13,9 +13,7 @@ import MusicAPI
 typealias MusicsSourcesResult = Result<[MusicResult],Error>
 
 protocol SearchInteractorProtocol: AnyObject {
-   // var presenter: SearchPresenterProtocol? { get set }
     func getMusics(with searchText: String)
-    // var output: SearchInteractorProtocol? { get set }
     
 }
 

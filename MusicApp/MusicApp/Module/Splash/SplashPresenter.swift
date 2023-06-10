@@ -47,7 +47,5 @@ extension SplashPresenter: SplashInteractorOutputProtocol {
             view.noInternetConnection()
         }
     }
-    
-    
 }
 

@@ -19,7 +19,6 @@ class BaseViewController: UIViewController, LoadingShowable {
         let okAction = UIAlertAction(title: "OK", style: .default)
         alert.addAction(okAction)
     }
-    
 
 }
 

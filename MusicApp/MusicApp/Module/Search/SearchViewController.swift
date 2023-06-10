@@ -33,14 +33,14 @@ final class SearchViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // SearchViewController'ı bir UINavigationController içine yerleştirme
-        let navigationController = UINavigationController(rootViewController: self)
-        navigationController.navigationBar.prefersLargeTitles = true
-        
-        // Oluşturulan UINavigationController'ı kullanarak mevcut görünümü değiştirme
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            appDelegate.window?.rootViewController = navigationController
-        }
+//        // SearchViewController'ı bir UINavigationController içine yerleştirme
+//        let navigationController = UINavigationController(rootViewController: self)
+//        navigationController.navigationBar.prefersLargeTitles = true
+//        
+//        // Oluşturulan UINavigationController'ı kullanarak mevcut görünümü değiştirme
+//        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+//            appDelegate.window?.rootViewController = navigationController
+//        }
         print("Is embedded in UINavigationController: \(navigationController != nil)")
         presenter.viewDidLoad()
     }
@@ -93,10 +93,6 @@ extension SearchViewController: SearchViewProtocol {
     }
     
     func showError(_ message: String) {
-//        print(error)
-//        DispatchQueue.main.async {
-//            self.searchResults = []
-//        }
         showAlert("Error", message)
     }
     

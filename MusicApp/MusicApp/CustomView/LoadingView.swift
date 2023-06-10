@@ -26,7 +26,12 @@ class LoadingView {
     }
 
     func startLoading() {
-        UIApplication.shared.windows.first?.addSubview(blurView)
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+            let mainWindow = windowScene.windows.first else {
+                return
+        }
+
+        mainWindow.addSubview(blurView)
         blurView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.startAnimating()
     }
