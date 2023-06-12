@@ -22,13 +22,11 @@ class MusicResultCell: UITableViewCell, AVAudioPlayerDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
    
     @IBAction func playButtonTapped(_ sender: Any) {
@@ -48,41 +46,44 @@ class MusicResultCell: UITableViewCell, AVAudioPlayerDelegate {
     }
     
     private func playAudioFromURL(_ audioURL: URL) {
-            let session = URLSession.shared
-            let request = URLRequest(url: audioURL)
+        let session = URLSession.shared
+        let request = URLRequest(url: audioURL)
             
-            let task = session.dataTask(with: request) { [weak self] (data, response, error) in
-                if let error = error {
+        let task = session.dataTask(with: request) { [weak self] (data, response, error) in
+            if let error = error {
+                print("Failed to play audio: \(error)")
+                return
+            }
+                
+            guard let data = data else {
+                print("Failed to get audio data")
+                return
+            }
+                
+            DispatchQueue.main.async {
+                do {
+                    self?.player = try AVAudioPlayer(data: data)
+                    self?.player?.delegate = self
+                    self?.player?.prepareToPlay()
+                    self?.player?.play()
+                    self?.playButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+                } catch {
                     print("Failed to play audio: \(error)")
-                    return
-                }
-                
-                guard let data = data else {
-                    print("Failed to get audio data")
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    do {
-                        self?.player = try AVAudioPlayer(data: data)
-                        self?.player?.delegate = self
-                        self?.player?.prepareToPlay()
-                        self?.player?.play()
-                        self?.playButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
-                    } catch {
-                        print("Failed to play audio: \(error)")
-                    }
                 }
             }
-            
-            task.resume()
         }
         
-        func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-            playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
-        }
+        task.resume()
+    }
+        
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+    }
     
     func configure(with musicResult: MusicResult) {
+        musicImage.layer.cornerRadius = 5
+        musicImage.layer.masksToBounds = true
+        
         artistName.text = musicResult.trackName
         trackName.text = musicResult.artistName
         playButton.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
@@ -103,6 +104,5 @@ class MusicResultCell: UITableViewCell, AVAudioPlayerDelegate {
                 }
             }
         }
-    }
-    
+    } 
 }

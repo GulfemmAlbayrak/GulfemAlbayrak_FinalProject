@@ -1,9 +1,3 @@
-//
-//  SearchViewController.swift
-//  MusicApp
-//
-//  Created by Gülfem Albayrak on 7.06.2023.
-//
 
 import UIKit
 import MusicAPI
@@ -15,14 +9,12 @@ protocol SearchViewProtocol: AnyObject {
     func getSearchText() -> String
     func configureSearchBar()
     func configureTableView()
-    func reloadData()
     func update(with musicResult: [MusicResult])
     func showError(_ message:String)
     func setTitle(_ title: String)
 }
 
 final class SearchViewController: BaseViewController {
-    
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -33,28 +25,12 @@ final class SearchViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        // SearchViewController'ı bir UINavigationController içine yerleştirme
-//        let navigationController = UINavigationController(rootViewController: self)
-//        navigationController.navigationBar.prefersLargeTitles = true
-//        
-//        // Oluşturulan UINavigationController'ı kullanarak mevcut görünümü değiştirme
-//        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-//            appDelegate.window?.rootViewController = navigationController
-//        }
         print("Is embedded in UINavigationController: \(navigationController != nil)")
         presenter.viewDidLoad()
     }
-    
-
 }
+
 extension SearchViewController: SearchViewProtocol {
-    
-    func reloadData() {
-        DispatchQueue.main.async { [ weak self ] in
-            guard let self else { return }
-            self.tableView.reloadData()
-        }
-    }
 
     func getSearchText() -> String {
         return searchBar.text ?? ""
@@ -121,8 +97,6 @@ extension SearchViewController: UITableViewDataSource {
         cell.configure(with: musicResult)
         return cell
     }
-
-
 } 
 
 extension SearchViewController: UITableViewDelegate {
@@ -136,7 +110,6 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         presenter?.getMusic(with: getSearchText())
     }
-    
 }
 
 

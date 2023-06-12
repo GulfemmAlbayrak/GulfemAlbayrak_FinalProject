@@ -24,7 +24,7 @@ public class MusicService: MusicServiceProtocol {
             case .success(let data):
                 let decoder = JSONDecoder()
                 do {
-                    let musicResponse = try decoder.decode(MusicResponse.self, from: data)
+                    let musicResponse = try decoder.decode(MusicResponse.self, from: data) 
                     completion(.success(musicResponse.results))
                 } catch {
                     completion(.failure(error))

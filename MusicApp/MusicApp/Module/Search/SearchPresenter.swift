@@ -19,6 +19,9 @@ import MusicAPI
      
      private var music: [MusicResult] = []
      
+//     private var timer: DispatchSourceTimer?
+//     private let searchDelay: TimeInterval = 0.5
+     
  init(
      view: SearchViewProtocol,
      router: SearchRouterProtocol,
@@ -28,7 +31,6 @@ import MusicAPI
      self.router = router
      self.interactor = interactor
  }
-     
  }
 
 extension SearchPresenter: SearchPresenterProtocol {
@@ -43,6 +45,16 @@ extension SearchPresenter: SearchPresenterProtocol {
     func getMusic(with searchText: String) {
         view.showLoadingView()
         interactor.getMusics(with: searchText)
+//        timer?.cancel() // Önceki zamanlayıcıyı iptal et
+
+//
+//        timer = DispatchSource.makeTimerSource(queue: DispatchQueue.global())
+//        timer?.schedule(deadline: .now() + searchDelay)
+//        timer?.setEventHandler { [weak self] in
+//
+//            self?.interactor.getMusics(with: searchText)
+//        }
+//        timer?.resume()
     }
      
      func music(_ index: Int) -> MusicResult? {
@@ -57,15 +69,14 @@ extension SearchPresenter: SearchPresenterProtocol {
          guard let source = music(index) else { return }
          router.navigate(.detail(source: source))
      }
-
  }
 
 extension SearchPresenter: SearchInteractorOutputProtocol {
     
     func fetchMusicsOutput(_ result: MusicsSourcesResult) {
-         
+        
         view.hideLoadingView()
-         
+        
         switch result {
         case .success(let musicResult):
             self.music = musicResult
@@ -73,9 +84,7 @@ extension SearchPresenter: SearchInteractorOutputProtocol {
         case .failure:
             view.showError("Something went wrong")
         }
-         
-     }
-     
+    }
  }
 
  

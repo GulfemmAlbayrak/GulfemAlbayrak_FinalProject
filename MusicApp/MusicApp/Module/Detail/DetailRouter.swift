@@ -40,22 +40,15 @@ final class DetailRouter {
     
     static func createModule() -> DetailViewController {
         let view = DetailViewController()
-        //let interactor = PostCreateInteractor()
         let router = DetailRouter()
         let presenter = DetailPresenter(
             view: view
-           //router: router
-            //interactor: interactor
         )
         view.presenter = presenter
-        //interactor.output = presenter
         router.viewController = view
         return view
     }
-
-    
 }
-
 
 extension DetailRouter: DetailRouterProtocol {
     
@@ -66,6 +59,4 @@ extension DetailRouter: DetailRouterProtocol {
             viewController?.navigationController?.pushViewController(homeVC, animated: true) //Bu doğru mu ?
         }
     }
-    
-    
 }

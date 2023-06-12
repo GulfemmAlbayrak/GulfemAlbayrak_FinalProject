@@ -16,6 +16,9 @@ protocol DetailViewControllerProtocol: AnyObject {
     func genreName(_ text: String)
     func getSource() -> MusicResult?
     func playButtonTapped()
+    func favButtonTapped()
+    var playButton: UIButton! { get set }
+    var favButton: UIButton! { get set }
 }
 
 final class DetailViewController: BaseViewController {
@@ -25,31 +28,38 @@ final class DetailViewController: BaseViewController {
     @IBOutlet weak var trackCount: UILabel!
     @IBOutlet weak var trackName: UILabel!
     @IBOutlet weak var genreName: UILabel!
+    @IBOutlet weak var favButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
     
     weak var searchViewController: SearchViewController?
-    
+    var favoriteMusics: [MusicResult] = []
     var presenter: DetailPresenterProtocol!
     var musicResult: MusicResult?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
+        
+        image.layer.cornerRadius = 10
+        image.layer.masksToBounds = true
 
-//        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButtonTapped))
-//         navigationItem.leftBarButtonItem = backButton
     }
-//
-//     @objc private func backButtonTapped() {
-//         navigationController?.popViewController(animated: true)
-//     }
+
+    @IBAction func favButtonTapped(_ sender: Any) {
+        presenter.favButtonTapped(trackName: trackName.text)
+    }
     
     @IBAction func playButtonTapped(_ sender: Any) {
         playButtonTapped()
     }
-    
 }
 
 extension DetailViewController: DetailViewControllerProtocol {
+    
+    func favButtonTapped() {
+        presenter.favButtonTapped(trackName: trackName.text)
+    }
+    
     func playButtonTapped() {
         presenter.playButtonTapped()
     }
@@ -78,6 +88,5 @@ extension DetailViewController: DetailViewControllerProtocol {
     func getSource() -> MusicResult? {
         return musicResult
     }
-    
 }
 

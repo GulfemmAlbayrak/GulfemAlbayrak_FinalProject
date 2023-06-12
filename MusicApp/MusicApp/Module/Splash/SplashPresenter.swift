@@ -11,7 +11,6 @@ protocol SplashPresenterProtocol: AnyObject {
     func viewDidAppear()
 }
 
-
 final class SplashPresenter: SplashPresenterProtocol {
     
     unowned var view: SplashViewControllerProtocol!

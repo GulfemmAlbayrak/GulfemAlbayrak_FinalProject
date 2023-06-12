@@ -16,7 +16,6 @@ protocol SplashRouterProtocol: AnyObject {
     func navigate(_ route: SplashRoutes)
 }
 
-
 final class SplashRouter {
     
     weak var viewController: SplashViewController?
@@ -41,11 +40,11 @@ extension SplashRouter: SplashRouterProtocol {
         case .homeScreen:
             guard let window = viewController?.view.window else { return }
             let searchVC = SearchRouter.start()
-            let navigationController = UINavigationController(rootViewController: searchVC )
-            window.makeKeyAndVisible()
+            let navigationController = UINavigationController(rootViewController: searchVC)
             window.rootViewController = navigationController
+
         }
     }
-    
-    
 }
+
+

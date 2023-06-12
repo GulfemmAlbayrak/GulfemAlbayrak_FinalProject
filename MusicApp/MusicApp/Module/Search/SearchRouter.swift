@@ -1,14 +1,6 @@
-//
-//  Router.swift
-//  VIPER
-//
-//  Created by Gülfem Albayrak on 7.06.2023.
-//
+
 import MusicAPI
 import UIKit
-//object
-//Entry point
-
 
 protocol SearchRouterProtocol {
     func navigate(_ route: SearchRoutes)
@@ -42,26 +34,13 @@ extension SearchRouter: SearchRouterProtocol {
         print("Navigate to route: \(route)")
         switch route {
         case .detail(let source):
-                
-//                guard let window = viewController?.view.window else { return }
-//                let detailVC = DetailRouter.createModule()
-//                detailVC.musicResult = source
-//
-//                window.navigationController?.pushViewController(detailVC, animated: true)
-            
             guard let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController else { return }
             let detailVC = DetailRouter.createModule()
             detailVC.musicResult = source
             navigationController.pushViewController(detailVC, animated: true)
-                
-            }
         }
     }
+}
 
 
-//            guard let window = viewController?.view.window else { return }
-//            let detailVC = DetailRouter.createModule()
-//            detailVC.musicResult = source
-//            let navigationController = UINavigationController(rootViewController: detailVC )
-//            window.makeKeyAndVisible()
-//            window.rootViewController = navigationController
+

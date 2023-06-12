@@ -8,10 +8,6 @@
 import Foundation
 import MusicAPI
 
-protocol DetailInteractorProtocol {
-    // Define your protocol methods, if any
-}
-
 protocol DetailInteractorOutputProtocol {
     func fetchMusicDetailOutput(result: MusicsSourcesResult)
 }

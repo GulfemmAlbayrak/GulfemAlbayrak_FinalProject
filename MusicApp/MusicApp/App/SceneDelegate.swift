@@ -13,31 +13,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
-//        guard let scene = (scene as? UIWindowScene) else { return }
-//        let window = UIWindow(windowScene: scene)
-//        let search = SearchRouter.start()
-//        let navigationController = UINavigationController(rootViewController: search )
-//        window.makeKeyAndVisible()
-//        window.rootViewController = search
-//        self.window = window
-                
-//        guard let scene = (scene as? UIWindowScene) else { return }
-//        let window = UIWindow(windowScene: scene)
-//        let search = SearchRouter.start()
-//        let navigationController = UINavigationController(rootViewController: search )
-//        window.rootViewController = search
-//        self.window = window
-//        window.makeKeyAndVisible()
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(windowScene: windowScene)
-        
-        let search = SearchRouter.start()
-        let navigationController = UINavigationController(rootViewController: search)
-        
-        window.rootViewController = navigationController
+
+        guard let scene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: scene)
+        let splash = SplashRouter.createModule()
         window.makeKeyAndVisible()
-        
+        window.rootViewController = splash
         self.window = window
 
 

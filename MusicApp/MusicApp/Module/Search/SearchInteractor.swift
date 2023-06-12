@@ -1,14 +1,6 @@
 
-//Interactor
-
 import Foundation
 import MusicAPI
-
-//object
-//protocol
-//ref to presenter
-
-//API CALL
 
 typealias MusicsSourcesResult = Result<[MusicResult],Error>
 

@@ -11,8 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="MusicApp" customModuleProvider="target">
             <connections>
                 <outlet property="artistName" destination="oIV-2H-zTQ" id="6Q2-T3-3Wf"/>
+                <outlet property="favButton" destination="2Uz-DF-QEB" id="QjW-W4-DrK"/>
                 <outlet property="genreName" destination="WHg-tc-7fD" id="7ut-Mk-UlV"/>
                 <outlet property="image" destination="mLi-7m-QM4" id="TV8-i8-tkl"/>
+                <outlet property="playButton" destination="4GI-NV-LyI" id="lct-zh-aku"/>
                 <outlet property="trackCount" destination="QJB-K9-YVY" id="22n-sW-2UP"/>
                 <outlet property="trackName" destination="o14-MC-40x" id="UmU-fp-hUn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -24,30 +26,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mLi-7m-QM4">
-                    <rect key="frame" x="121.66666666666669" y="119" width="150" height="150"/>
+                    <rect key="frame" x="71.666666666666686" y="119" width="250" height="250"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="150" id="MOb-9c-5XR"/>
-                        <constraint firstAttribute="height" constant="150" id="TAN-aM-iza"/>
+                        <constraint firstAttribute="width" constant="250" id="MOb-9c-5XR"/>
+                        <constraint firstAttribute="height" constant="250" id="TAN-aM-iza"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIV-2H-zTQ">
-                    <rect key="frame" x="20" y="305" width="353" height="24"/>
+                    <rect key="frame" x="20" y="389" width="353" height="24"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                     <color key="textColor" systemColor="linkColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJB-K9-YVY">
-                    <rect key="frame" x="20" y="345" width="353" height="24"/>
+                    <rect key="frame" x="20" y="429" width="353" height="24"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                     <color key="textColor" systemColor="linkColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GI-NV-LyI">
-                    <rect key="frame" x="166.66666666666666" y="385" width="60" height="50"/>
+                    <rect key="frame" x="166.66666666666666" y="463" width="60" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="24s-7y-pYA"/>
                         <constraint firstAttribute="height" constant="50" id="E0F-TE-qfy"/>
                     </constraints>
+                    <color key="tintColor" systemColor="linkColor"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" image="play.circle" catalog="system"/>
                     <connections>
@@ -55,23 +58,32 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o14-MC-40x">
-                    <rect key="frame" x="20" y="455" width="353" height="21"/>
+                    <rect key="frame" x="20" y="523" width="353" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHg-tc-7fD">
-                    <rect key="frame" x="20" y="492" width="353" height="21"/>
+                    <rect key="frame" x="20" y="560" width="353" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Uz-DF-QEB">
+                    <rect key="frame" x="314" y="71" width="51" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Pfb-Zh-CtS"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                    <connections>
+                        <action selector="favButtonTapped:" destination="-1" eventType="touchUpInside" id="aOH-DM-0Sg"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="mLi-7m-QM4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7aO-g8-oaC"/>
-                <constraint firstItem="o14-MC-40x" firstAttribute="top" secondItem="4GI-NV-LyI" secondAttribute="bottom" constant="20" id="9P4-64-ORZ"/>
+                <constraint firstItem="o14-MC-40x" firstAttribute="top" secondItem="4GI-NV-LyI" secondAttribute="bottom" constant="10" id="9P4-64-ORZ"/>
                 <constraint firstItem="oIV-2H-zTQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="DNx-fP-xbi"/>
                 <constraint firstItem="4GI-NV-LyI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="EIU-fF-tOn"/>
                 <constraint firstItem="QJB-K9-YVY" firstAttribute="top" secondItem="oIV-2H-zTQ" secondAttribute="bottom" constant="16" id="NCG-o0-sOV"/>
@@ -80,18 +92,21 @@
                 <constraint firstItem="oIV-2H-zTQ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Zkt-a3-b1n"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QJB-K9-YVY" secondAttribute="trailing" constant="20" id="bEv-2X-SsB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="o14-MC-40x" secondAttribute="trailing" constant="20" id="bSC-Hd-PTU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2Uz-DF-QEB" secondAttribute="trailing" constant="28" id="gbv-ws-VUB"/>
                 <constraint firstItem="mLi-7m-QM4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="60" id="iQi-hm-aBT"/>
                 <constraint firstItem="o14-MC-40x" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="irW-co-rWc"/>
-                <constraint firstItem="4GI-NV-LyI" firstAttribute="top" secondItem="QJB-K9-YVY" secondAttribute="bottom" constant="16" id="lPl-YN-GUm"/>
+                <constraint firstItem="4GI-NV-LyI" firstAttribute="top" secondItem="QJB-K9-YVY" secondAttribute="bottom" constant="10" id="lPl-YN-GUm"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="WHg-tc-7fD" secondAttribute="trailing" constant="20" id="lrk-gS-zrf"/>
+                <constraint firstItem="2Uz-DF-QEB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="12" id="qOF-Ta-aY7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oIV-2H-zTQ" secondAttribute="trailing" constant="20" id="uMQ-lI-IBH"/>
-                <constraint firstItem="oIV-2H-zTQ" firstAttribute="top" secondItem="mLi-7m-QM4" secondAttribute="bottom" constant="36" id="wbY-en-Dk5"/>
+                <constraint firstItem="oIV-2H-zTQ" firstAttribute="top" secondItem="mLi-7m-QM4" secondAttribute="bottom" constant="20" id="wbY-en-Dk5"/>
                 <constraint firstItem="WHg-tc-7fD" firstAttribute="top" secondItem="o14-MC-40x" secondAttribute="bottom" constant="16" id="y36-Ll-giK"/>
             </constraints>
             <point key="canvasLocation" x="132" y="-11"/>
         </view>
     </objects>
     <resources>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="play.circle" catalog="system" width="128" height="123"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
