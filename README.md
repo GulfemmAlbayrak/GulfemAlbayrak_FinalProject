@@ -29,7 +29,7 @@
 
 ## Video
 
-|                              |                              |         
-| ---------------------------- | ---------------------------- |
-| <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzU1YTEzNzUyODcyMzc0YjlkZDZiYzU2MGMwYjVmZmQ4NzcwZTA1NyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/3UAD2wmpTRSCuwNb7L/giphy.gif" width="300px"> | <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDUzNjkzNTQ5OGY3MTNkZmJhOWE3MTYzNTE5Zjc0NmQ5NTY4MTgzMCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/ogr7DRHGuXcPakR5EB/giphy.gif" width="300px"> |
+|                              |     
+| ---------------------------- | 
+| <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMG1zdXE5bjI1cjJ6NWFxODJnd3F0MWd2dHV0dHRqM3ZnNHVlbjh6YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EI7FS4XcSowAdBSekn/giphy.gif" width="300px"> |
 
