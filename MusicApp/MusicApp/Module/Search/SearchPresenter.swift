@@ -19,8 +19,6 @@ import MusicAPI
      
      private var music: [MusicResult] = []
      
-//     private var timer: DispatchSourceTimer?
-//     private let searchDelay: TimeInterval = 0.5
      
  init(
      view: SearchViewControllerProtocol,
@@ -45,16 +43,7 @@ extension SearchPresenter: SearchPresenterProtocol {
     func getMusic(with searchText: String) {
         view.showLoadingView()
         interactor.getMusics(with: searchText)
-//        timer?.cancel() // Önceki zamanlayıcıyı iptal et
 
-//
-//        timer = DispatchSource.makeTimerSource(queue: DispatchQueue.global())
-//        timer?.schedule(deadline: .now() + searchDelay)
-//        timer?.setEventHandler { [weak self] in
-//
-//            self?.interactor.getMusics(with: searchText)
-//        }
-//        timer?.resume()
     }
      
      func music(_ index: Int) -> MusicResult? {

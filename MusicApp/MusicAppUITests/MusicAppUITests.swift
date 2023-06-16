@@ -29,8 +29,14 @@ final class SearchViewControllerUITests: XCTestCase {
         searchBar.typeText("Tarkan")
 
         let tableView = app.tables.matching(identifier: "tableViewIdenfier")
+        XCTAssertTrue(tableView.cells.count > 0)
+        
         let cell = tableView.cells.element(matching: .cell, identifier: "Cell_0")
         cell.tap()
+        
+        let button = app.buttons["playButtonIdentifier"]
+        XCTAssertTrue(button.exists)
+        button.tap()
 
     }
     

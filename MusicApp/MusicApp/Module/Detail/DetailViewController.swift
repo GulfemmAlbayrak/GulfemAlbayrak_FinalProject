@@ -41,7 +41,7 @@ final class DetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
-        
+        setAccessibilityIdentifier()
         image.layer.cornerRadius = 10
         image.layer.masksToBounds = true
 
@@ -91,8 +91,10 @@ extension DetailViewController: DetailViewControllerProtocol {
         return musicResult
     }
     
-//    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
-//        present(viewControllerToPresent, animated: flag, completion: completion)
-//    }
 }
 
+extension DetailViewController {
+    func setAccessibilityIdentifier() {
+        playButton.accessibilityIdentifier = "playButtonIdentifier"
+    }
+}

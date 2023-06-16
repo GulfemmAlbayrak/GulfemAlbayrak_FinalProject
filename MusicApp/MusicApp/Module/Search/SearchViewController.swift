@@ -123,11 +123,4 @@ extension SearchViewController {
 
     }
 }
-//        let cell = XCUIApplication().otherElements["cellIdentifier"].firstMatch
-//        XCTAssertTrue(cell.exists)
-//        cell.tap()
 
-//        let cell = app.cells["cellIdentifier"].firstMatch
-//        XCTAssertTrue(cell.exists)
-//
-//        cell.tap()
