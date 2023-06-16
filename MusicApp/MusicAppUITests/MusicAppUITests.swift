@@ -10,46 +10,32 @@
 
 import XCTest
 
-final class MusicAppUITests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
+final class SearchViewControllerUITests: XCTestCase {
         
+        private var app: XCUIApplication!
         
-//        let app = XCUIApplication()
-//        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .searchField).element.tap()
-//        
-//        let tablesQuery = app.tables
-//        tablesQuery.cells.containing(.staticText, identifier:"Şımarık").staticTexts["Tarkan"].tap()
-//        app.buttons["love"].tap()
-//        app.buttons["play"].tap()
-//        app.buttons["pause"].tap()
-//        
-//        let itunesButton = app.navigationBars["iTunes"].buttons["iTunes"]
-//        itunesButton.tap()
-//        app.searchFields.containing(.button, identifier:"Clear text").element.tap()
-//        tablesQuery.cells.containing(.staticText, identifier:"Yolla").staticTexts["Tarkan"].tap()
-//        itunesButton.tap()
-//        app.searchFields.buttons["Clear text"].tap()
-                        
+        override func setUp() {
+            super.setUp()
+            continueAfterFailure = false
+            app = XCUIApplication()
+            app.launch()
+        }
+    
+    func testExample() {
+        let searchBar = XCUIApplication().otherElements["searchBarIdentifier"]
+        XCTAssertTrue(searchBar.exists)
+        searchBar.tap()
+        sleep(1)
+        searchBar.typeText("Tarkan")
 
+        let tableView = app.tables.matching(identifier: "tableViewIdenfier")
+        let cell = tableView.cells.element(matching: .cell, identifier: "Cell_0")
+        cell.tap()
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    override func tearDown() {
+        super.tearDown()
     }
 
     func testLaunchPerformance() throws {
@@ -61,3 +47,4 @@ final class MusicAppUITests: XCTestCase {
         }
     }
 }
+

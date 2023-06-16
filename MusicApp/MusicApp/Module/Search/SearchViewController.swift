@@ -23,10 +23,13 @@ final class SearchViewController: BaseViewController {
     var presenter: SearchPresenterProtocol!
     var searchResults: [MusicResult] = []
     
+    let searchBarIdentifier = "searchBarIdentifier"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Is embedded in UINavigationController: \(navigationController != nil)")
         presenter.viewDidLoad()
+        setAccessibilityIdentifier()
     }
 }
 
@@ -95,6 +98,7 @@ extension SearchViewController: UITableViewDataSource {
         let musicResult = searchResults[indexPath.row]
         cell.musicResult = musicResult
         cell.configure(with: musicResult)
+        cell.accessibilityIdentifier = "Cell_\(indexPath.row)"
         return cell
     }
 } 
@@ -112,4 +116,18 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
+extension SearchViewController {
+    func setAccessibilityIdentifier() {
+        searchBar.accessibilityIdentifier = "searchBarIdentifier"
+        tableView.accessibilityIdentifier = "tableViewIdenfier"
 
+    }
+}
+//        let cell = XCUIApplication().otherElements["cellIdentifier"].firstMatch
+//        XCTAssertTrue(cell.exists)
+//        cell.tap()
+
+//        let cell = app.cells["cellIdentifier"].firstMatch
+//        XCTAssertTrue(cell.exists)
+//
+//        cell.tap()

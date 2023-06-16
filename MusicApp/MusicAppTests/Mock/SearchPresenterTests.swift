@@ -46,20 +46,5 @@ final class SearchPresenterTests: XCTestCase {
         XCTAssertTrue(interactor.isInvokedFetchMusics)
         XCTAssertEqual(interactor.invokedFetchMusicsCount, 1)
     }
-    
-//    func test_fetchNewsOutput() {
-//        presenter.fetchMusicsOutput(.success(.results.response))
-//    }
-//}
-//
-//extension MusicModel {
-//
-//    static var musicResult: MusicModel {
-//        let bundle = Bundle(for: SearchPresenterTests.self)
-//        let path = bundle.path(forResource: "Musics", ofType: "json")!
-//        let file = try! String(contentsOfFile: path)
-//        let data = file.data(using: .utf8)!
-//        let musicResult = try! JSONDecoder().decode(MusicModel.self, from: data)
-//        return musicResult
-//    }
+
 }
