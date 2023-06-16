@@ -19,6 +19,7 @@ protocol DetailViewControllerProtocol: AnyObject {
     func favButtonTapped()
     var playButton: UIButton! { get set }
     var favButton: UIButton! { get set }
+//    func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?)
 }
 
 final class DetailViewController: BaseViewController {
@@ -30,6 +31,7 @@ final class DetailViewController: BaseViewController {
     @IBOutlet weak var genreName: UILabel!
     @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
+    
     
     weak var searchViewController: SearchViewController?
     var favoriteMusics: [MusicResult] = []
@@ -88,5 +90,9 @@ extension DetailViewController: DetailViewControllerProtocol {
     func getSource() -> MusicResult? {
         return musicResult
     }
+    
+//    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
+//        present(viewControllerToPresent, animated: flag, completion: completion)
+//    }
 }
 

@@ -29,6 +29,25 @@ final class MusicAppUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
+        
+        
+//        let app = XCUIApplication()
+//        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .searchField).element.tap()
+//        
+//        let tablesQuery = app.tables
+//        tablesQuery.cells.containing(.staticText, identifier:"Şımarık").staticTexts["Tarkan"].tap()
+//        app.buttons["love"].tap()
+//        app.buttons["play"].tap()
+//        app.buttons["pause"].tap()
+//        
+//        let itunesButton = app.navigationBars["iTunes"].buttons["iTunes"]
+//        itunesButton.tap()
+//        app.searchFields.containing(.button, identifier:"Clear text").element.tap()
+//        tablesQuery.cells.containing(.staticText, identifier:"Yolla").staticTexts["Tarkan"].tap()
+//        itunesButton.tap()
+//        app.searchFields.buttons["Clear text"].tap()
+                        
+
 
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

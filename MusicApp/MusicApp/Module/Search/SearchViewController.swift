@@ -2,7 +2,7 @@
 import UIKit
 import MusicAPI
 
-protocol SearchViewProtocol: AnyObject {
+protocol SearchViewControllerProtocol: AnyObject {
     
     func showLoadingView()
     func hideLoadingView()
@@ -30,7 +30,7 @@ final class SearchViewController: BaseViewController {
     }
 }
 
-extension SearchViewController: SearchViewProtocol {
+extension SearchViewController: SearchViewControllerProtocol {
 
     func getSearchText() -> String {
         return searchBar.text ?? ""
@@ -55,11 +55,11 @@ extension SearchViewController: SearchViewProtocol {
             
             if self.getSearchText().isEmpty {
                 self.tableView.isHidden = true
-                self.titleLabel.text = "iTunes'a hoş Geldiniz!"
+                self.titleLabel.text = "Welcome to iTunes"
                 self.titleLabel.isHidden = false
             } else if musicResult.isEmpty {
                 self.tableView.isHidden = true
-                self.titleLabel.text = "Sonuç bulunamadı"
+                self.titleLabel.text = "No Result Found "
                 self.titleLabel.isHidden = false
             } else {
                 self.tableView.isHidden = false

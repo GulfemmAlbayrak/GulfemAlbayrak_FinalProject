@@ -13,7 +13,7 @@ import MusicAPI
 
  final class SearchPresenter {
     
-     unowned var view: SearchViewProtocol
+     unowned var view: SearchViewControllerProtocol
      let router: SearchRouterProtocol!
      let interactor: SearchInteractorProtocol!
      
@@ -23,7 +23,7 @@ import MusicAPI
 //     private let searchDelay: TimeInterval = 0.5
      
  init(
-     view: SearchViewProtocol,
+     view: SearchViewControllerProtocol,
      router: SearchRouterProtocol,
      interactor: SearchInteractorProtocol)
  {

@@ -1,6 +1,6 @@
 
 import MusicAPI
-import UIKit
+import Foundation
 
 protocol SearchRouterProtocol {
     func navigate(_ route: SearchRoutes)
@@ -34,10 +34,10 @@ extension SearchRouter: SearchRouterProtocol {
         print("Navigate to route: \(route)")
         switch route {
         case .detail(let source):
-            guard let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController else { return }
+            //guard let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController else { return }
             let detailVC = DetailRouter.createModule()
             detailVC.musicResult = source
-            navigationController.pushViewController(detailVC, animated: true)
+            viewController?.navigationController?.pushViewController(detailVC, animated: true)
         }
     }
 }
