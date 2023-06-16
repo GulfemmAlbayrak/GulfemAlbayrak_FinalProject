@@ -21,7 +21,6 @@ final class SearchInteractor {
 extension SearchInteractor: SearchInteractorProtocol {
     
     func getMusics(with searchText: String) {
-        print("start fetching")
         musicService.fetchMusic(searchText: searchText) { [weak self] result in
             guard let self else { return }
             self.output?.fetchMusicsOutput(result)

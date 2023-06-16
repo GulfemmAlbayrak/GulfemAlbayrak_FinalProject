@@ -56,7 +56,7 @@ extension DetailRouter: DetailRouterProtocol {
         switch route {
         case .home:
             let homeVC = SearchRouter.start()
-            viewController?.navigationController?.pushViewController(homeVC, animated: true) //Bu doğru mu ?
+            viewController?.navigationController?.pushViewController(homeVC, animated: true)
         }
     }
 }

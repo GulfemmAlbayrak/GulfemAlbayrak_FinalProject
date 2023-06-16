@@ -54,7 +54,6 @@ extension SearchPresenter: SearchPresenterProtocol {
     }
      
      func didSelectRowAt(index: Int) {
-         print("Did select row at index: \(index)")
          guard let source = music(index) else { return }
          router.navigate(.detail(source: source))
      }

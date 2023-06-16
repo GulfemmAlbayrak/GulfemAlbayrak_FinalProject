@@ -27,7 +27,6 @@ final class SearchViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Is embedded in UINavigationController: \(navigationController != nil)")
         presenter.viewDidLoad()
         setAccessibilityIdentifier()
     }
@@ -50,7 +49,6 @@ extension SearchViewController: SearchViewControllerProtocol {
     }
     
     func update(with musicResult: [MusicResult]) {
-        print("got musics")
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.searchResults = musicResult
@@ -105,7 +103,6 @@ extension SearchViewController: UITableViewDataSource {
 
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Cell selected at index: \(indexPath.row)")
         presenter.didSelectRowAt(index: indexPath.row)
     }
 }

@@ -19,7 +19,6 @@ protocol DetailViewControllerProtocol: AnyObject {
     func favButtonTapped()
     var playButton: UIButton! { get set }
     var favButton: UIButton! { get set }
-//    func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?)
 }
 
 final class DetailViewController: BaseViewController {

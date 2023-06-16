@@ -31,7 +31,6 @@ class SearchRouter {
 
 extension SearchRouter: SearchRouterProtocol {
     func navigate(_ route: SearchRoutes) {
-        print("Navigate to route: \(route)")
         switch route {
         case .detail(let source):
             let detailVC = DetailRouter.createModule()

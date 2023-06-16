@@ -43,9 +43,6 @@ extension DetailPresenter: DetailPresenterProtocol {
             let result = try context.fetch(fetchRequest)
             
             if let favMusic = result.first as? NSManagedObject {
-//                let alert = UIAlertController(title: "Uyarı", message: "Lütfen tarih seçin!", preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "Tamam", style: .cancel, handler: nil))
-//                view.present(alert, animated: true, completion: nil)
                 context.delete(favMusic)
                 print("Track name removed from favorites: \(trackName)")
                 view?.favButton.setImage(UIImage(systemName: "heart"), for: .normal)

@@ -93,7 +93,7 @@
                 <outlet property="trackCountLabel" destination="cjZ-v8-v4g" id="SUs-ve-xMC"/>
                 <outlet property="trackName" destination="OGl-0l-MhM" id="Dcd-EI-7ZK"/>
             </connections>
-            <point key="canvasLocation" x="114.50381679389312" y="-92.253521126760575"/>
+            <point key="canvasLocation" x="227" y="-130"/>
         </tableViewCell>
     </objects>
     <resources>

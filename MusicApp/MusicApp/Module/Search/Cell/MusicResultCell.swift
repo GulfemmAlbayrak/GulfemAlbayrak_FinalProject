@@ -31,7 +31,7 @@ class MusicResultCell: UITableViewCell, AVAudioPlayerDelegate {
    
     @IBAction func playButtonTapped(_ sender: Any) {
         guard let musicResult = musicResult else {
-            return print("dfkgmkfdm")
+            return 
         }
         
         if let previewUrlString = musicResult.previewUrl, let previewUrl = URL(string: previewUrlString) {
